@@ -1,6 +1,9 @@
 eureka:
   instance:
     instance-id: ${spring.application.name}:${random.uuid}
+  client:
+    serviceUrl:
+      defaultZone: http://ms-discoveryserver:8761/eureka/
 server:
   port: 8080
 spring:
@@ -20,22 +23,19 @@ spring:
         - id: pasivoahorro
           uri: lb://PASIVOAHORRO
           predicates:
-            - Path=/v1/pasivoahorro/transaction/**,/v1/pasivoahorro/transactionType/**,/v1/pasivoahorro/**,/v1/pasivoahorro/getByDocumentNumber/**,/v1/pasivoahorro/getByAccountNumber/**,
+            - Path=/v1/pasivoahorro/transaction/**,/v1/pasivoahorro/transactionType/**,/v1/pasivoahorro/**,/v1/pasivoahorro/getByDocumentNumber/**,/v1/pasivoahorro/getByAccountNumber/**
         - id: pasivocuentacorriente
           uri: lb://PASIVOCUENTACORRIENTE
           predicates:
-            - Path=/v1/pasivocuentacorriente/transaction/**,/v1/pasivocuentacorriente/transactionType/**,/v1/pasivocuentacorriente/**,/v1/pasivocuentacorriente/getByDocumentNumber/**,/v1/pasivocuentacorriente/getByAccountNumber/**,
-
+            - Path=/v1/pasivocuentacorriente/transaction/**,/v1/pasivocuentacorriente/transactionType/**,/v1/pasivocuentacorriente/**,/v1/pasivocuentacorriente/getByDocumentNumber/**,/v1/pasivocuentacorriente/getByAccountNumber/**
         - id: activopersonal
           uri: lb://ACTIVOPERSONAL
           predicates:
             - Path=/v1/activopersonal/**,/v1/activopersonal/transaction/**,/v1/activopersonal/transactionType/**
-
         - id: activoempresarial
           uri: lb://ACTIVOEMPRESARIAL
           predicates:
             - Path=/v1/activoempresarial/**,/v1/activoempresarial/transaction/**,/v1/activoempresarial/transactionType/**
-
         - id: tarjetacredito
           uri: lb://TARJETACREDITO
           predicates:
